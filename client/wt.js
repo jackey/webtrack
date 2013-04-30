@@ -1,6 +1,6 @@
 (function () {
 	function lib() {
-		var url = "http://webtrack.local:81/";
+		var url = "http://42.96.141.8:81/";
 		function extend(o1, o2) {
 			for (var key in o2) {
 				o1[key] = o2[key];
