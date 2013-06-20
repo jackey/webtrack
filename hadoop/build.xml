@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="webtrack" default="init" basedir=".">
+	<property name="bin" value="bin" />
+	<property name="build" value="build" />
+	<property name="src" value="src" />
+	<target name="init" description="init">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile">
+		<javac srcdir="${src}" destdir="${build}" />
+	</target>
+
+	<target name="build" depends="compile" description="build">
+		<jar jarfile="${bin}/${ant.project.name}.jar" basedir="${build}">
+			<manifest>
+				<attribute name="Main-Class" value="Webtrack" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean" description="clean project">
+		<delete dir="${bin}" />
+		<delete dir="${build}" />
+	</target>
+</project>
