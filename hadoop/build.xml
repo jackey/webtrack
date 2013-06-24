@@ -4,21 +4,35 @@
 	<property name="bin" value="bin" />
 	<property name="build" value="build" />
 	<property name="src" value="src" />
+	<property name="hadoop_home" value="/home/jackey/workspace/hadoop-0.19.0" />
+	<path id="project.classpath">
+		 <fileset dir="${hadoop_home}">
+		 	<include name="*.jar" />
+		 	<include name="lib/*.jar" />
+		 </fileset>
+	</path>
 	<target name="init" description="init">
 		<mkdir dir="${bin}" />
 		<mkdir dir="${build}" />
+      <delete file="${bin}/${ant.project.name}.jar" />
 	</target>
 
 	<target name="compile" depends="init" description="compile">
-		<javac srcdir="${src}" destdir="${build}" />
+		<javac srcdir="${src}" destdir="${build}">
+		 <classpath refid="project.classpath" />
+		</javac>
 	</target>
 
 	<target name="build" depends="compile" description="build">
 		<jar jarfile="${bin}/${ant.project.name}.jar" basedir="${build}">
 			<manifest>
-				<attribute name="Main-Class" value="Webtrack" />
+				<attribute name="Main-Class" value="com.bonesdev.webtrack.WebTrack" />
 			</manifest>
 		</jar>
+	</target>
+	
+	<target name="run" depends="build" description="build">
+		<java fork="true" jar="${bin}/${ant.project.name}.jar" classpathref="project.classpath" />
 	</target>
 
 	<target name="clean" description="clean project">

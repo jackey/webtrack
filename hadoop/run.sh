@@ -4,5 +4,5 @@ ant clean
 ant build
 
 if [[ $? -eq 0 ]]; then
-	java -jar bin/webtrack.jar
+	hadoop jar bin/webtrack.jar
 fi

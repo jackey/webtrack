@@ -2,4 +2,5 @@ server/wt.js
 server/server
 server/getdata.html
 server/mysql.php
-
+.project
+.classpath
