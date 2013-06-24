@@ -13,14 +13,14 @@ import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reporter;
 
-public class WebTrackMapper extends MapReduceBase implements Mapper {
+public class WebTrackMapper extends MapReduceBase implements Mapper<WritableComparable, Text, Text, IntWritable> {
 	
 	private static final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 	private static final Log LOG = LogFactory.getLog(WebTrackMapper.class);
 	
 	public void map(WritableComparable key, Text values,
-			OutputCollector output, Reporter reporter) throws IOException {
+			OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
 		String line = values.toString();
 		StringTokenizer itr  = new StringTokenizer(line);
 		LOG.info(line);
@@ -29,12 +29,5 @@ public class WebTrackMapper extends MapReduceBase implements Mapper {
 			output.collect(word, one);
 		}
  	}
-
-	@Override
-	public void map(Object arg0, Object arg1, OutputCollector arg2,
-			Reporter arg3) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
