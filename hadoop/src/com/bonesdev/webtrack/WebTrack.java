@@ -33,10 +33,12 @@ public class WebTrack extends Configured implements Tool{
 		conf.setCombinerClass(WebTrackReducer.class);
 		conf.setReducerClass(WebTrackReducer.class);
 		
-		conf.setNumMapTasks(1);
+		conf.setNumMapTasks(3);
 		conf.setNumReduceTasks(1);
 		
-		FileInputFormat.setInputPaths(conf, pwd + "/data/word.md");
+		FileInputFormat.addInputPaths(conf, pwd + "/data/word.md");
+		FileInputFormat.addInputPaths(conf, pwd + "/data/word1.md");
+		FileInputFormat.addInputPaths(conf, pwd + "/data/word2.md");
 		FileOutputFormat.setOutputPath(conf, new Path(pwd + "/out"));
 		
 		JobClient.runJob(conf);
