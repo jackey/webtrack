@@ -1,7 +1,8 @@
 package com.bonesdev.webtrack;
 
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,12 +23,10 @@ public class WebTrackMapper extends MapReduceBase implements Mapper<WritableComp
 	public void map(WritableComparable key, Text values,
 			OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
 		String line = values.toString();
-		StringTokenizer itr  = new StringTokenizer(line);
-		LOG.info(line);
-		while (itr.hasMoreTokens()) {
-			word.set(itr.nextToken());
-			output.collect(word, one);
-		}
+		Date d = new Date(new Long( line.split(",")[7]) * 1000);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+		LOG.info(format.format(d));
+		output.collect(new Text(format.format(d)), one);
  	}
 
 }

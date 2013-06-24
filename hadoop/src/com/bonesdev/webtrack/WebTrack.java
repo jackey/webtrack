@@ -36,9 +36,7 @@ public class WebTrack extends Configured implements Tool{
 		conf.setNumMapTasks(3);
 		conf.setNumReduceTasks(1);
 		
-		FileInputFormat.addInputPaths(conf, pwd + "/data/word.md");
-		FileInputFormat.addInputPaths(conf, pwd + "/data/word1.md");
-		FileInputFormat.addInputPaths(conf, pwd + "/data/word2.md");
+		FileInputFormat.addInputPaths(conf, pwd + "/data/node.csv");
 		FileOutputFormat.setOutputPath(conf, new Path(pwd + "/out"));
 		
 		JobClient.runJob(conf);
