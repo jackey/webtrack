@@ -1,0 +1,32 @@
+{
+  "name": "admin",
+  "version": "0.0.1",
+  "description": "Admin UI for webtrack hadoop data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackey/webtrack"
+  },
+  "keywords": [
+    "webtrack",
+    "nodejs",
+    "socketio",
+    "hadoop"
+  ],
+  "dependencies": {
+   "express": "3.2.0",
+   "bones": "2.4.0",
+   "jade": "0.31.2",
+   "mysql": "2.0.0-alpha8",
+   "deferred": "0.6.5"
+  },
+  "engines": {
+   "node": ">=0.6.6"
+  },
+  "author": "JackeyChen",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
